@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#f4f1ea"/>
+<path d="M76 112h1048M76 528h1048" stroke="#dcded3" stroke-width="2"/>
+<g transform="translate(82 45)" stroke="#346e62" stroke-width="6" stroke-linecap="round"><path d="M22 0v44M0 22h44M6 6l32 32M6 38L38 6"/></g>
+<text x="148" y="77" font-family="Arial,sans-serif" font-size="26" fill="#303a35">ariel055132.</text>
+<text x="80" y="212" font-family="Arial,sans-serif" font-size="16" letter-spacing="4" fill="#5f695f">A SPACE TO THINK, BUILD &amp; GROW</text>
+<text x="76" y="308" font-family="Georgia,serif" font-size="72" fill="#303a35">Stay curious.</text>
+<text x="76" y="400" font-family="Georgia,serif" font-size="72" fill="#346e62">Make things.</text>
+<text x="80" y="473" font-family="Arial,sans-serif" font-size="23" fill="#5f695f">Side projects, development notes, and the process in between.</text>
+<g transform="translate(985 320)" stroke="#346e62" stroke-width="13" stroke-linecap="round"><path d="M0-62V62M-62 0H62M-44-44l88 88M-44 44l88-88"/></g>
+<text x="80" y="575" font-family="Arial,sans-serif" font-size="20" fill="#5f695f">ariel055132.github.io</text>
+</svg>

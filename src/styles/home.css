@@ -1,0 +1,122 @@
+.home-main { padding-bottom: 30px; }
+.home-main .home-hero { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 8px; padding: 78px 0 62px; }
+.home-main .home-eyebrow, .home-main .home-section-label, .home-main .home-project-art-caption { color: var(--about-muted); font-size: 10px; font-weight: 400; letter-spacing: 1.6px; line-height: 1.5; }
+.home-main .home-hello { margin-top: 25px; font-size: 15px; color: var(--about-muted); }
+.home-main .home-hello > span:last-child { color: var(--about-accent); margin-left: 4px; }
+.home-main h1 { margin: 14px 0 21px; font-size: clamp(34px, 4.4vw, 46px); font-weight: 700; letter-spacing: -1.6px; line-height: 1.4; }
+.home-main .home-heading-line { display: block; }
+.home-main .home-heading-accent { color: var(--about-accent); }
+.home-main .home-lead { max-width: 370px; color: var(--about-muted); font-size: 15px; line-height: 1.95; white-space: pre-line; text-wrap: pretty; }
+.home-main .home-actions { display: flex; align-items: center; gap: 25px; margin-top: 29px; }
+.home-main .home-button, .home-main .home-text-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 15px; font-size: 14px; }
+.home-main .home-button { padding: 10px 18px; border: 1px solid transparent; border-radius: 7px; background: var(--about-accent); color: var(--about-button-text); transition: transform .2s, box-shadow .2s; }
+.home-main .home-button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgb(32 60 49 / 12%); }
+.home-main .home-text-link { color: var(--about-accent); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 5px; transition: text-decoration-color .2s; }
+.home-main .home-text-link:hover { text-decoration-color: currentColor; }
+.home-main .home-button > span:last-child, .home-main .home-text-link > span:last-child { font-size: 19px; line-height: 1; }
+.home-main .home-hero-art { width: 124%; margin: 20px 0 0 -24%; }
+.home-main .home-hero-art figcaption { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 8px; color: var(--about-muted); font-size: 9px; letter-spacing: 2px; }
+.home-main .home-art-line { width: 22px; height: 1px; background: var(--about-accent); opacity: .6; }
+.home-main .home-intro-line { display: flex; justify-content: space-between; gap: 18px; padding: 19px 0; border-top: 1px solid var(--about-border); border-bottom: 1px solid var(--about-border); color: var(--about-muted); font-size: 12px; }
+.home-main .home-intro-line p:first-child { display: flex; align-items: center; gap: 9px; }
+.home-main .home-status-dot { flex: 0 0 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--about-accent); }
+.home-main .home-section { margin-top: 58px; }
+.home-main .home-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+.home-main .home-section-heading h2 { display: flex; align-items: center; gap: 14px; font-size: 19px; font-weight: 700; line-height: 1.5; }
+.home-main .home-section-number { font-size: 11px; font-weight: 400; letter-spacing: 1px; color: var(--about-accent); }
+.home-main .home-section-label { font-size: 9px; letter-spacing: 1.4px; }
+.home-main .home-project { display: grid; grid-template-columns: .95fr 1fr; align-items: center; gap: 38px; }
+.home-main .home-project-art { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 284px; padding: 31px 25px 24px; border-radius: 12px; background: var(--about-card); }
+.home-main .home-browser { width: 100%; max-width: 310px; border: 1px solid var(--about-border); border-radius: 7px; overflow: hidden; background: var(--about-bg); box-shadow: 0 9px 17px rgb(32 60 49 / 8%); transform: rotate(-3deg); }
+.home-main .home-browser-bar { display: flex; align-items: center; gap: 4px; height: 23px; padding: 0 8px; border-bottom: 1px solid var(--about-border); }
+.home-main .home-browser-bar > span:not(.home-browser-address) { width: 4px; height: 4px; border-radius: 50%; background: var(--about-accent); opacity: .45; }
+.home-main .home-browser-bar > .home-browser-address { margin-left: 21px; font-size: 7px; letter-spacing: .4px; color: var(--about-muted); }
+.home-main .home-browser-body { padding: 9px 18px 17px; }
+.home-main .home-browser-nav { display: flex; align-items: center; gap: 9px; }
+.home-main .home-browser-nav b { margin-right: auto; font: italic 20px Georgia, serif; color: var(--about-accent); }
+.home-main .home-browser-nav > span { width: 18px; height: 3px; border-radius: 2px; background: var(--about-border); }
+.home-main .home-browser-page { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 19px 0 22px; }
+.home-main .home-browser-copy { flex: 1; }
+.home-main .home-browser-kicker { display: block; width: 46px; height: 3px; margin-bottom: 9px; background: var(--about-accent); opacity: .3; }
+.home-main .home-browser-copy strong { display: block; margin-bottom: 11px; font-size: 19px; line-height: 1.2; letter-spacing: -.4px; color: var(--about-accent); }
+.home-main .home-browser-rule { display: block; width: 105px; height: 3px; margin-top: 5px; background: var(--about-border); }
+.home-main .home-browser-rule.short { width: 79px; }
+.home-main .home-browser-button { display: block; width: 43px; height: 13px; margin-top: 11px; border-radius: 3px; background: var(--about-accent); opacity: .8; }
+.home-main .home-browser-sprout { width: 76px; height: 91px; color: var(--about-accent); }
+.home-main .home-browser-bottom { display: flex; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--about-border); }
+.home-main .home-browser-bottom span { width: 25%; height: 3px; background: var(--about-border); }
+.home-main .home-project-art-caption { margin-top: 24px; font-size: 8px; letter-spacing: 1.8px; }
+.home-main .home-project-type { color: var(--about-muted); font-size: 10px; letter-spacing: .7px; }
+.home-main .home-project-copy h3 { max-width: 330px; margin: 10px 0 14px; font-size: 25px; font-weight: 700; line-height: 1.5; letter-spacing: -.6px; text-wrap: balance; }
+.home-main .home-project-description { color: var(--about-muted); font-size: 14px; line-height: 1.95; text-wrap: pretty; }
+.home-main .home-project-tags { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; padding: 0; margin: 17px 0 18px; }
+.home-main .home-project-tags li { padding: 2px 9px; border: 1px solid var(--about-border); border-radius: 4px; color: var(--about-muted); font-size: 10px; line-height: 1.8; }
+.home-main .home-project-link { font-size: 13px; }
+.home-main .home-notes-section { margin-top: 61px; margin-bottom: 35px; }
+.home-main .home-notes { display: flex; align-items: center; gap: 24px; padding: 29px 30px; border-radius: 10px; background: var(--about-note); }
+.home-main .home-notebook { flex: 0 0 57px; color: var(--about-accent); transform: rotate(-6deg); }
+.home-main .home-notebook svg { width: 57px; height: 65px; }
+.home-main .home-notes-copy { flex: 1; }
+.home-main .home-notes h3 { font-size: 20px; font-weight: 700; letter-spacing: -.4px; line-height: 1.5; }
+.home-main .home-notes-copy > p { margin-top: 7px; color: var(--about-muted); font-size: 13px; line-height: 1.8; }
+.home-main .home-notes-copy > .home-notes-status { margin-top: 9px; font-size: 11px; }
+.home-main .home-notes-link { flex-shrink: 0; font-size: 13px; gap: 12px; }
+
+@media (max-width: 760px) {
+	.home-main .home-hero { padding: 52px 0 44px; grid-template-columns: 1.15fr 1fr; }
+	.home-main h1 { font-size: 36px; }
+	.home-main .home-hero-art { width: 130%; margin-left: -30%; }
+	.home-main .home-project { gap: 26px; }
+	.home-main .home-project-art { padding-left: 18px; padding-right: 18px; }
+	.home-main .home-project-copy h3 { font-size: 23px; }
+	.home-main .home-notes { gap: 18px; padding: 25px 24px; flex-wrap: wrap; }
+	.home-main .home-notes-link { margin-left: 75px; }
+	.home-main .home-notes-copy { flex-basis: calc(100% - 75px); }
+}
+
+@media (max-width: 600px) {
+	.home-main .home-hero { grid-template-columns: 1fr; gap: 7px; padding: 38px 0 24px; }
+	.home-main .home-eyebrow { font-size: 9px; letter-spacing: 1.3px; }
+	.home-main .home-hello { margin-top: 21px; font-size: 14px; }
+	.home-main h1 { font-size: clamp(33px, 7.8vw, 44px); margin-top: 12px; margin-bottom: 16px; }
+	.home-main .home-lead { max-width: 380px; font-size: 14px; }
+	.home-main .home-actions { margin-top: 22px; }
+	.home-main .home-hero-art { width: 100%; max-width: 430px; margin: 4px auto 0; justify-self: center; }
+	.home-main .home-hero-art figcaption { margin-top: -5px; font-size: 8px; }
+	.home-main .home-intro-line { display: block; padding: 15px 0; font-size: 11px; }
+	.home-main .home-intro-line > p + p { margin-top: 5px; padding-left: 15px; }
+	.home-main .home-section { margin-top: 37px; }
+	.home-main .home-section-heading { margin-bottom: 20px; }
+	.home-main .home-section-heading h2 { font-size: 18px; gap: 11px; }
+	.home-main .home-section-label { display: none; }
+	.home-main .home-project { grid-template-columns: 1fr; gap: 24px; }
+	.home-main .home-project-art { min-height: 276px; padding: 29px 30px 20px; }
+	.home-main .home-browser { max-width: 285px; }
+	.home-main .home-project-art-caption { margin-top: 23px; }
+	.home-main .home-project-copy h3 { max-width: 100%; font-size: 24px; text-wrap: pretty; }
+	.home-main .home-project-tags { margin-top: 14px; margin-bottom: 14px; }
+	.home-main .home-notes-section { margin-top: 42px; margin-bottom: 16px; }
+	.home-main .home-notes { gap: 15px; padding: 24px 20px; }
+	.home-main .home-notebook { flex-basis: 40px; }
+	.home-main .home-notebook svg { width: 40px; height: 49px; }
+	.home-main .home-notes-copy { flex-basis: calc(100% - 55px); }
+	.home-main .home-notes h3 { font-size: 18px; }
+	.home-main .home-notes-link { margin-left: 55px; }
+}
+
+@media (max-width: 360px) {
+	.home-main h1 { font-size: 31px; letter-spacing: -1.5px; }
+	.home-main .home-actions { gap: 20px; }
+	.home-main .home-button { padding: 9px 13px; gap: 12px; }
+	.home-main .home-button, .home-main .home-text-link { font-size: 13px; }
+	.home-main .home-project-art { padding-left: 18px; padding-right: 18px; }
+	.home-main .home-notes { padding: 21px 16px; gap: 11px; }
+	.home-main .home-notebook { display: none; }
+	.home-main .home-notes-copy { flex-basis: 100%; }
+	.home-main .home-notes-link { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.home-main .home-button, .home-main .home-text-link { transition: none; }
+	.home-main .home-button:hover { transform: none; }
+}

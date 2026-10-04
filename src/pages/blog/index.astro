@@ -1,114 +1,64 @@
 ---
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
+import AboutText from '../../components/AboutText.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import '../../styles/blog.css';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+const sampleIds = new Set(['first-post', 'second-post', 'third-post', 'markdown-style-guide', 'using-mdx']);
+const hasSamples = posts.some((post) => sampleIds.has(post.id));
+const title = { zh: '開發筆記', en: 'Notes from the process' };
+const description = {
+	zh: '記錄實作、學習，以及把想法做出來的過程。',
+	en: 'A place for experiments, lessons learned, and the process of bringing ideas to life.',
+};
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<SiteLayout title={title} description={description} mainClass="notes-main">
+	<header class="notes-heading">
+		<p class="eyebrow" lang="en">THE NOTEBOOK</p>
+		<h1><AboutText text={title} /></h1>
+		<p class="notes-intro"><AboutText text={description} /></p>
+	</header>
+
+	{hasSamples && (
+		<aside class="notes-status">
+			<span class="notes-status-mark" aria-hidden="true">✳</span>
+			<p><AboutText text={{
+				zh: '筆記正在慢慢整理中。以下保留 Astro 範例文章，先讓你看看未來的閱讀空間。',
+				en: 'The notebook is taking shape. These Astro sample posts offer a preview of the reading space.',
+			}} /></p>
+		</aside>
+	)}
+
+	<section aria-labelledby="notes-list-title">
+		<div class="notes-list-heading">
+			<h2 id="notes-list-title"><AboutText text={{ zh: '所有文章', en: 'All entries' }} /></h2>
+			<a class="notes-rss" href="/rss.xml">
+				<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="4.5" cy="15.5" r="1.5" fill="currentColor" /><path d="M3.5 9a7.5 7.5 0 0 1 7.5 7.5M3.5 3.5a13 13 0 0 1 13 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+				<AboutText text={{ zh: 'RSS 訂閱', en: 'RSS feed' }} />
+			</a>
+		</div>
+		<ul class="notes-list">
+			{posts.map((post) => (
+				<li>
+					<a class="note-entry" href={`/blog/${post.id}/`}>
+						<div class="note-entry-copy">
+							<div class="note-entry-meta">
+								<FormattedDate date={post.data.pubDate} />
+								{sampleIds.has(post.id) && <span class="sample-label"><AboutText text={{ zh: '範例文章', en: 'Sample post' }} /></span>}
+							</div>
+							<h3 lang={sampleIds.has(post.id) ? 'en' : undefined}>{post.data.title}<span class="note-entry-arrow" aria-hidden="true">↗</span></h3>
+							<p lang={sampleIds.has(post.id) ? 'en' : undefined}>{post.data.description}</p>
+						</div>
+						{post.data.heroImage && <Image class="note-entry-image" width={288} height={192} src={post.data.heroImage} alt="" loading="lazy" />}
+					</a>
+				</li>
+			))}
+		</ul>
+	</section>
+</SiteLayout>

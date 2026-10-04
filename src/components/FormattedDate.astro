@@ -1,17 +1,16 @@
 ---
+import AboutText from './AboutText.astro';
+
 interface Props {
 	date: Date;
 }
-
 const { date } = Astro.props;
+const options: Intl.DateTimeFormatOptions = {
+	year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC',
+};
 ---
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
-</time>
+<time datetime={date.toISOString()}><AboutText text={{
+	zh: date.toLocaleDateString('zh-TW', options),
+	en: date.toLocaleDateString('en-US', options),
+}} /></time>

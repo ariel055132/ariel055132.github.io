@@ -1,0 +1,37 @@
+---
+import type { ImageMetadata } from 'astro';
+import type { AboutCopy } from '../data/about';
+import AboutText from '../components/AboutText.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { labels } from '../data/about';
+
+interface Props {
+    title?: string | AboutCopy;
+    description?: string | AboutCopy;
+    mainClass?: string;
+    type?: 'website' | 'article' | 'profile';
+    image?: ImageMetadata | string;
+    publishedTime?: Date;
+    modifiedTime?: Date;
+}
+
+const { mainClass, ...metadata } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-Hant" data-language="zh" data-theme="light">
+    <head>
+        <BaseHead {...metadata} />
+        <slot name="head" />
+    </head>
+    <body class="site-page">
+        <a class="skip-link" href="#main"><AboutText text={labels.skip} /></a>
+        <Header />
+        <main id="main" class:list={['site-main', mainClass]} tabindex="-1">
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>

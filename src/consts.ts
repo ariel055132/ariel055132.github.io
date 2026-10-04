@@ -1,5 +1,5 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+import { profile } from './data/about';
 
-export const SITE_TITLE = 'Astro Blog';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SITE_TITLE = profile.name;
+export const SITE_DESCRIPTION = profile.description.zh;
+export const SITE_DESCRIPTION_EN = profile.description.en;
