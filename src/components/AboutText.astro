@@ -1,0 +1,6 @@
+---
+import type { AboutCopy } from '../data/about';
+interface Props { text: AboutCopy }
+const { text } = Astro.props;
+---
+<span lang="zh-Hant" data-copy-lang="zh">{text.zh}</span><span lang="en" data-copy-lang="en">{text.en}</span>
