@@ -1,0 +1,56 @@
+---
+import type { Project } from '../data/projects';
+interface Props { project: Project }
+const { project } = Astro.props;
+---
+
+<div class="project-visual">
+	{project.cover ? (
+		<img src={project.cover} alt={`${project.title.zh} / ${project.title.en}`} width="900" height="560" />
+	) : project.slug === 'personal-website' ? (
+		<div class="website-art" aria-hidden="true">
+			<div class="mini-browser">
+				<div class="browser-bar"><span></span><span></span><span></span><span class="browser-address">a little home on the web</span></div>
+				<div class="browser-body">
+					<div class="browser-nav"><b>a.</b><span></span><span></span></div>
+					<div class="browser-page">
+						<div class="browser-copy"><span class="browser-kicker"></span><strong>Stay curious.<br />Make things.</strong><span class="browser-rule"></span><span class="browser-rule short"></span><span class="browser-button"></span></div>
+						<svg class="browser-sprout" viewBox="0 0 90 100" fill="none" focusable="false"><path d="M45 79V29M45 60L27 46M45 47L63 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M45 42C24 40 23 22 30 14C45 18 51 28 45 42Z" fill="currentColor" opacity=".55"/><path d="M46 48C46 26 67 22 75 28C76 44 60 54 46 48Z" fill="currentColor" opacity=".8"/><path d="M44 65C26 70 12 55 17 44C32 39 44 49 44 65Z" fill="currentColor" opacity=".7"/><path d="M31 76H59L55 91H35Z" fill="currentColor" opacity=".3"/><path d="M29 76H61" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+					</div>
+					<div class="browser-bottom"><span></span><span></span><span></span></div>
+				</div>
+			</div>
+			<span class="art-caption">AN IDEA, TAKING SHAPE.</span>
+		</div>
+	) : <span class="visual-mark" aria-hidden="true">✳</span>}
+</div>
+
+<style>
+	.project-visual { display: grid; place-items: center; min-width: 0; min-height: 284px; height: 100%; padding: 31px 25px 24px; border-radius: 12px; background: var(--about-card); }
+	.project-visual > img { width: 100%; height: auto; border-radius: 7px; }
+	.website-art { display: flex; flex-direction: column; align-items: center; width: 100%; }
+	.mini-browser { width: 100%; max-width: 310px; border: 1px solid var(--about-border); border-radius: 7px; overflow: hidden; background: var(--about-bg); box-shadow: 0 9px 17px rgb(32 60 49 / 8%); transform: rotate(-3deg); }
+	.browser-bar { display: flex; align-items: center; gap: 4px; height: 23px; padding: 0 8px; border-bottom: 1px solid var(--about-border); }
+	.browser-bar > span:not(.browser-address) { width: 4px; height: 4px; border-radius: 50%; background: var(--about-accent); opacity: .45; }
+	.browser-address { margin-left: 21px; font-size: 7px; letter-spacing: .4px; color: var(--about-muted); }
+	.browser-body { padding: 9px 18px 17px; }
+	.browser-nav { display: flex; align-items: center; gap: 9px; }
+	.browser-nav b { margin-right: auto; font: italic 20px Georgia, serif; color: var(--about-accent); }
+	.browser-nav > span { width: 18px; height: 3px; border-radius: 2px; background: var(--about-border); }
+	.browser-page { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 19px 0 22px; }
+	.browser-copy { flex: 1; }
+	.browser-kicker { display: block; width: 46px; height: 3px; margin-bottom: 9px; background: var(--about-accent); opacity: .3; }
+	.browser-copy strong { display: block; margin-bottom: 11px; font-size: 19px; line-height: 1.2; letter-spacing: -.4px; color: var(--about-accent); }
+	.browser-rule { display: block; width: 105px; height: 3px; margin-top: 5px; background: var(--about-border); }
+	.browser-rule.short { width: 79px; }
+	.browser-button { display: block; width: 43px; height: 13px; margin-top: 11px; border-radius: 3px; background: var(--about-accent); opacity: .8; }
+	.browser-sprout { width: 76px; height: 91px; color: var(--about-accent); }
+	.browser-bottom { display: flex; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--about-border); }
+	.browser-bottom span { width: 25%; height: 3px; background: var(--about-border); }
+	.art-caption { margin-top: 24px; color: var(--about-muted); font-size: 8px; letter-spacing: 1.8px; line-height: 1.5; }
+	.visual-mark { color: var(--about-accent); font-size: 100px; }
+	@media (max-width: 380px) {
+		.project-visual { padding-inline: 18px; }
+		.browser-sprout { width: 60px; }
+	}
+</style>

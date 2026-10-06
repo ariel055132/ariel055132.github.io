@@ -1,11 +1,11 @@
 ---
 import AboutDesk from '../components/AboutDesk.astro';
 import AboutText from '../components/AboutText.astro';
+import ProjectVisual from '../components/ProjectVisual.astro';
+import { personalWebsite } from '../data/projects';
 import { profile } from '../data/about';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import '../styles/home.css';
-
-const websiteRepository = 'https://github.com/ariel055132/ariel055132.github.io';
 ---
 
 <SiteLayout
@@ -41,29 +41,16 @@ const websiteRepository = 'https://github.com/ariel055132/ariel055132.github.io'
 	<section class="home-section" aria-labelledby="home-projects-heading">
 		<div class="home-section-heading">
 			<h2 id="home-projects-heading"><span class="home-section-number" aria-hidden="true">01</span><AboutText text={{ zh: '正在做的事', en: 'What I’m building' }} /></h2>
-			<span class="home-section-label">PROJECTS & EXPERIMENTS</span>
+			<a class="home-text-link" href="/projects/"><AboutText text={{ zh: '所有作品', en: 'All projects' }} /><span aria-hidden="true">→</span></a>
 		</div>
 		<div class="home-project">
-			<div class="home-project-art" aria-hidden="true">
-				<div class="home-browser">
-					<div class="home-browser-bar"><span></span><span></span><span></span><span class="home-browser-address">a little home on the web</span></div>
-					<div class="home-browser-body">
-						<div class="home-browser-nav"><b>a.</b><span></span><span></span></div>
-						<div class="home-browser-page">
-							<div class="home-browser-copy"><span class="home-browser-kicker"></span><strong>Stay curious.<br />Make things.</strong><span class="home-browser-rule"></span><span class="home-browser-rule short"></span><span class="home-browser-button"></span></div>
-							<svg class="home-browser-sprout" viewBox="0 0 90 100" fill="none" focusable="false"><path d="M45 79V29M45 60L27 46M45 47L63 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M45 42C24 40 23 22 30 14C45 18 51 28 45 42Z" fill="currentColor" opacity=".55"/><path d="M46 48C46 26 67 22 75 28C76 44 60 54 46 48Z" fill="currentColor" opacity=".8"/><path d="M44 65C26 70 12 55 17 44C32 39 44 49 44 65Z" fill="currentColor" opacity=".7"/><path d="M31 76H59L55 91H35Z" fill="currentColor" opacity=".3"/><path d="M29 76H61" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
-						</div>
-						<div class="home-browser-bottom"><span></span><span></span><span></span></div>
-					</div>
-				</div>
-				<span class="home-project-art-caption">AN IDEA, TAKING SHAPE.</span>
-			</div>
+			<ProjectVisual project={personalWebsite} />
 			<div class="home-project-copy">
-				<p class="home-project-type"><AboutText text={{ zh: '個人網站 · 持續更新中', en: 'PERSONAL WEBSITE · IN PROGRESS' }} /></p>
-				<h3><AboutText text={{ zh: '在網路上，蓋一個自己的地方。', en: 'Making a little home on the web.' }} /></h3>
-				<p class="home-project-description"><AboutText text={{ zh: '就是你正在逛的這個網站。用 Astro 把自我介紹、作品與筆記串起來，從版型到內容，慢慢長成自己的樣子。', en: 'The site you’re exploring right now. Built with Astro to bring an introduction, projects, and notes together, growing a little with every iteration.' }} /></p>
-				<ul class="home-project-tags" aria-label="Technologies"><li>Astro</li><li>GitHub Pages</li></ul>
-				<a class="home-text-link home-project-link" href={websiteRepository}><AboutText text={{ zh: '看看這個網站的原始碼', en: 'Explore the source code' }} /><span aria-hidden="true">↗</span></a>
+				<p class="home-project-type"><AboutText text={personalWebsite.category} /> · <AboutText text={personalWebsite.status} /></p>
+				<h3><AboutText text={personalWebsite.title} /></h3>
+				<p class="home-project-description"><AboutText text={personalWebsite.summary} /></p>
+				<ul class="home-project-tags" aria-label="Technologies">{personalWebsite.technologies.map((technology) => <li>{technology}</li>)}</ul>
+				<a class="home-text-link home-project-link" href={`/projects/${personalWebsite.slug}/`}><AboutText text={{ zh: '看看這個案例', en: 'Explore the case study' }} /><span aria-hidden="true">→</span></a>
 			</div>
 		</div>
 	</section>

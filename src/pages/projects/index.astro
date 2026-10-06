@@ -1,0 +1,42 @@
+---
+import AboutText from '../../components/AboutText.astro';
+import ProjectVisual from '../../components/ProjectVisual.astro';
+import { projects } from '../../data/projects';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import '../../styles/projects.css';
+---
+
+<SiteLayout
+	title={{ zh: '作品與實驗', en: 'Projects & experiments' }}
+	description={{ zh: '從小小的想法開始，記錄 side projects 的實作、取捨與持續改進。', en: 'Small ideas made real. A collection of side projects, decisions, and ongoing experiments.' }}
+	mainClass="projects-main"
+>
+	<header class="projects-heading">
+		<p class="eyebrow">PROJECTS & EXPERIMENTS</p>
+		<h1><AboutText text={{ zh: '想法，慢慢成為作品。', en: 'Small ideas, made real.' }} /></h1>
+		<p class="projects-lead"><AboutText text={{ zh: '從好奇心出發，動手做一點東西。\n這裡放著我的作品，也留下邊做邊學的過程。', en: 'Following curiosity and making things along the way. A home for my projects and what I learn while building them.' }} /></p>
+	</header>
+
+	<section aria-labelledby="projects-heading">
+		<div class="projects-section-heading">
+			<h2 id="projects-heading"><AboutText text={{ zh: '作品一覽', en: 'The collection' }} /> <span class="projects-count">{String(projects.length).padStart(2, '0')}</span></h2>
+			<span class="projects-small-label">BUILD · LEARN · REPEAT</span>
+		</div>
+		<div class="project-list">
+			{projects.map((project) => (
+				<article class="project-card">
+					<ProjectVisual project={project} />
+					<div class="project-card-copy">
+						<div class="project-kicker"><span><AboutText text={project.category} /> · {project.year}</span><span class="project-status"><AboutText text={project.status} /></span></div>
+						<h3><a href={`/projects/${project.slug}/`}><AboutText text={project.title} /></a></h3>
+						<p class="project-summary"><AboutText text={project.summary} /></p>
+						<ul class="project-tags" aria-label="Technologies / 使用技術">{project.technologies.map((technology) => <li>{technology}</li>)}</ul>
+						<a class="project-text-link" href={`/projects/${project.slug}/`}><AboutText text={{ zh: '看看這個案例', en: 'Explore the case study' }} /><span aria-hidden="true">→</span></a>
+					</div>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<div class="projects-endnote"><span aria-hidden="true">✳</span><p><AboutText text={{ zh: '慢慢做，慢慢累積。下一個想法正在路上。', en: 'One project at a time. There’s always another idea on the way.' }} /></p></div>
+</SiteLayout>

@@ -1,0 +1,59 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+import AboutText from '../../components/AboutText.astro';
+import ProjectVisual from '../../components/ProjectVisual.astro';
+import { projects } from '../../data/projects';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import '../../styles/projects.css';
+
+export const getStaticPaths = (() => projects.map((project) => ({
+	params: { slug: project.slug },
+	props: { project },
+}))) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { project } = Astro.props;
+const facts = [
+	{ label: { zh: '類型', en: 'Category' }, value: project.category },
+	{ label: { zh: '參與角色', en: 'Role' }, value: project.role },
+	{ label: { zh: '年份', en: 'Year' }, value: { zh: project.year, en: project.year } },
+	{ label: { zh: '使用技術', en: 'Built with' }, value: { zh: project.technologies.join(' / '), en: project.technologies.join(' / ') } },
+];
+---
+
+<SiteLayout title={project.title} description={project.summary} mainClass="projects-main project-detail" type="article">
+	<a class="project-back-link" href="/projects/"><span aria-hidden="true">←</span><AboutText text={{ zh: '所有作品', en: 'All projects' }} /></a>
+	<header class="project-detail-heading">
+		<div class="project-kicker"><span class="eyebrow">PROJECT CASE STUDY</span><span class="project-status"><AboutText text={project.status} /></span></div>
+		<h1><AboutText text={project.title} /></h1>
+		<p class="projects-lead"><AboutText text={project.summary} /></p>
+		<div class="project-actions">
+			<a class="primary-link" href={project.website}><AboutText text={{ zh: '看看網站', en: 'Visit the site' }} /><span aria-hidden="true">→</span></a>
+			{project.repository && <a class="project-text-link" href={project.repository} target="_blank" rel="noopener noreferrer"><AboutText text={{ zh: '查看原始碼', en: 'Source code' }} /><span aria-hidden="true">↗</span></a>}
+		</div>
+	</header>
+	<div class="project-hero-visual"><ProjectVisual project={project} /></div>
+	<dl class="project-facts">{facts.map((fact) => <div><dt><AboutText text={fact.label} /></dt><dd><AboutText text={fact.value} /></dd></div>)}</dl>
+
+	<div class="project-story-layout">
+		<aside class="project-contents">
+			<nav aria-label="Case study contents / 案例目錄">
+				<p class="eyebrow"><AboutText text={{ zh: '這個案例', en: 'IN THIS CASE' }} /></p>
+				<ol>{project.sections.map((section) => <li><a href={`#${section.id}`}><AboutText text={section.title} /></a></li>)}</ol>
+			</nav>
+		</aside>
+		<div class="project-story">
+			{project.sections.map((section, index) => (
+				<section class="project-story-section" aria-labelledby={section.id}>
+					<h2 id={section.id}><span class="project-section-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><AboutText text={section.title} /></h2>
+					{section.paragraphs.map((paragraph) => <p><AboutText text={paragraph} /></p>)}
+					{section.points && <ul>{section.points.map((point) => <li><AboutText text={point} /></li>)}</ul>}
+				</section>
+			))}
+		</div>
+	</div>
+	<nav class="project-bottom-nav" aria-label="Continue exploring / 繼續逛逛">
+		<a class="project-text-link" href="/projects/"><span aria-hidden="true">←</span><AboutText text={{ zh: '回到所有作品', en: 'Back to all projects' }} /></a>
+		<a class="project-text-link" href="/blog/"><AboutText text={{ zh: '逛逛開發筆記', en: 'Browse notes' }} /><span aria-hidden="true">→</span></a>
+	</nav>
+</SiteLayout>
